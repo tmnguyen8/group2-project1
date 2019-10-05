@@ -5,31 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <title>Document</title>
 </head>
 <body>
-
-
-    <!-- ********************************************************************************** -->
-    <!-- This is Test Area - TO BE DELETED -->
-    <div class="test jumbotron">
-        <h1>City</h1>
-            <div class="input-group md-form form-sm form-2 pl-0">
-                <input class="form-control my-0 py-1 red-border" type="text" placeholder="Search" aria-label="Search">
-                    <span class="input-group-text red lighten-3" id="basic-text1"><i class="fas fa-search text-grey"
-                        aria-hidden="true"></i>
-                    </span>
-            </div>
-        <h1>Departure</h1>
-            <input type="text" name="daterange" value="" />
-
-            <script>
-           
-            </script>
+    <nav class="banner">
+        <img src="" alt="" srcset="">
+    </nav>
     
-              
-
+    <div class="jumbotron container search-container">
+        <div class="row">
+            <div class="col s12 m6 l3">
+                <p>Departure</p>
+                <input type="text" class="">
+            </div>
+            <div class="col s12 m6 l3">
+                <p>Arrival</p>
+                <input type="text" class="">
+            </div>
+            <div class="col s12 m6 l3">
+                <p>Date</p>
+                <input type="text" class="">
+            </div>
+        </div>
+    </div>
+    <!-- Container to store all of flight search information from Skyscanner-->
+    <div class="jumbotron container flight-container">
+        Flight Results Here
+    </div>
+    <!-- Container to store top 5 Activities from  Yelp API-->
+    <div class="jumbotron container activity-container">
+        Activity Results Here
+    </div>
+    <!-- Container to store top 5 Restaurants from Yelp API -->
+    <div class="jumbotron container restaurant-container">
+        Restaurant Results Here
     </div>
 
     <!-- JQUERY and Javascript -->
@@ -38,6 +50,6 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     
-    <script src="app.js"></script>
+    <script src="./assets/js/app.js"></script>
 </body>
 </html>

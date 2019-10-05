@@ -1,8 +1,8 @@
 // GLOBAL VARIABLES
 // **************************************************
 var departureCity = "ATL";
-var arrivalCity = "LGA";
-var departureDate = "" //date in yyy-mm-dd format;
+var arrivalCity = "LAX";
+var departureDate = "2019-11-01" //date in yyyy-mm-dd format;
 var currency = "USD";
 var cityCode;
 var carrier = [];
@@ -10,8 +10,6 @@ var quotes = [];
 
 // Variables for Skyscanner API
 console.log(departureDate)
-
-
 
 // FUNCTIONS
 // **************************************************
@@ -55,7 +53,7 @@ function clientCallBack () {
 }
 var requestObj = {
 	url: corURL + '/' + yelpSearchURL,
-	data: {term: "activities", location: "Atlanta"},
+	data: {term: "activities", location: "Los Angeles"},
 	headers: {'Authorization': token},
 	error: function (jqXHR, textStatus, errorThrown) {
 		console.log('AJAX error, jqXHR = ', jqXHR, ', textStatus = ',
