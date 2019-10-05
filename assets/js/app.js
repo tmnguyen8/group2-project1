@@ -8,7 +8,7 @@ var cityCode;
 var carrier = [];
 var quotes = [];
 
-// Variables for Skyscanner API
+// Skyscanner API
 console.log(departureDate)
 
 // FUNCTIONS
