@@ -2,27 +2,53 @@
 // **************************************************
 var departureCity = "ATL";
 var arrivalCity = "LAX";
-var departureDate = "2019-11-01" //date in yyyy-mm-dd format;
+var departureDate = "2019-10-30" //date in yyyy-mm-dd format;
 var currency = "USD";
 var cityCode;
 var carrier = [];
-var quotes = [];
-
-// Skyscanner API
-console.log(departureDate)
+var quoteList = [];
+var responseFlight = {};
+var carrierIdObj = {}
 
 // FUNCTIONS
 // **************************************************
-// Date Picket Scripts
+// function to get carriers as string
+function getCarrierName() {
 
-
+};
+// function to get the carrier Ids as an object
+function getCarrierIds(responseFlight) {
+	for (i of responseFlight.Carriers) {
+		carrierIdObj[i.CarrierId] = i.Name;
+	}
+	return carrierIdObj;
+};
+// function to display quote information
+function displayQuotes () {
+	for (i of quoteList) {
+		var carrierId = i.OutboundLeg.CarrierIds[0];
+		var carrier = carrierIdObj[carrierId];
+		$(".flight-container").append(`
+			<div class="flight-quote row" style="border: 1px solid red">
+				<div class="flight-info col s12">
+					<div class="row">
+						<p class="airline col s4" data-airlineId="${i.OutboundLeg.CarrierIds[0]}">${carrier}</p>
+						<p class="col s4">${departureCity} to ${arrivalCity}</p>
+						<p class="col s4">Direct</p>
+					</div>
+				</div>
+				<h5 class="col s2">$${i.MinPrice}</h5>
+			</div>
+		`);
+	}
+}
 // EXECUTIONS
 // **************************************************
-
-var settings = {
+// GET Skyscanner API
+var requestFlight = {
 	"async": true,
 	"crossDomain": true,
-	"url": `https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/${currency}/en-US/${departureCity}-sky/${arrivalCity}-sky/${'2019-12-01'}?`,
+	"url": `https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/${currency}/en-US/${departureCity}-sky/${arrivalCity}-sky/${departureDate}?`,
 	"method": "GET",
 	"headers": {
 		"x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
@@ -30,21 +56,19 @@ var settings = {
 	}
 };
 
-$.ajax(settings).done(function (response) {
-	console.log(response);
-	carrier = response.Carriers;
-	quotes = response.Quotes;
-
+$.ajax(requestFlight).done(function (responseFlight) {
+	responseFlight = responseFlight;
+	quoteList = responseFlight.Quotes;
+	carrierIdObj = getCarrierIds(responseFlight);
+	displayQuotes();
 	// testing and console
-	console.log(`numCarrier=${carrier.length} | `)
+	console.log(carrierIdObj)
+	console.log(responseFlight);
+	console.log(quoteList);
+	
 });
 
-// $.getJSON( "https://raw.githubusercontent.com/tmnguyen8/JSON-Airports/master/airports.json", function( data ) {
-	
-// 	cityCode = data;
-// });
-
-// YELP API
+// GET Yelp API
 var token = 'Bearer jFVJNfB3Noyg_PpbzsCaewJ62IvGkS-twRfhB13JwiqNJU8XSmm-F9q2oPC9QgyRwODUZG_PeyftYHo0au77YUG61QxCS48CV4UeVOcRLyuehkrVFGl9m_Jhf2iXXXYx';
 var corURL = 'https://cors-anywhere.herokuapp.com';
 var yelpSearchURL = 'https://api.yelp.com/v3/businesses/search';
@@ -53,7 +77,7 @@ function clientCallBack () {
 }
 var requestObj = {
 	url: corURL + '/' + yelpSearchURL,
-	data: {term: "activities", location: "Los Angeles"},
+	data: {term: "top 5 activities", location: "Los Angeles"},
 	headers: {'Authorization': token},
 	error: function (jqXHR, textStatus, errorThrown) {
 		console.log('AJAX error, jqXHR = ', jqXHR, ', textStatus = ',
