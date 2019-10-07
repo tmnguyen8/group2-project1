@@ -9,39 +9,46 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <title>Document</title>
+    <title>A Getaway</title>
 </head>
 <body>
-    <nav class="banner">
-        <img class="img-responsive" id="imgLogo" src="assets/images/Logo.png" alt="Logo">
+    <nav class="banner red darken-4">
+        <img class="img-responsive offset-6" id="imgLogo" src="assets/images/Logo.png" alt="Logo">
     </nav>
     
-    <div class="jumbotron container search-container">
+    <div class="jumbotron container search-container" id="flightSearch">
         <div class="row">
-            <div class="col s12 m6 l3">
+            <div class="col s12 m6 l3" id="Departures">
                 <p>Departure</p>
-                <input type="text" class="">
+                <input type="text" class="inputBox">
             </div>
-            <div class="col s12 m6 l3">
+            <div class="col s12 m6 l3" id="Arrivals">
                 <p>Arrival</p>
-                <input type="text" class="">
+                <input type="text" class="inputBox">
             </div>
-            <div class="col s12 m6 l3">
+            <div class="col s12 m6 l3" id="Dates">
                 <p>Date</p>
-                <input type="text" class="">
+                <input type="text" class="inputBox">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-check">
+                <input type="checkbox" class="form-control-input" id="favorites">
+                <label class="form-control-label" for="favorite">Display Favorite</label>
             </div>
         </div>
     </div>
     <!-- Container to store all of flight search information from Skyscanner-->
-    <div class="jumbotron container flight-container">
-    
+
+    <div class="jumbotron container flight-container" id="flightResults">
+        Flight Results Here
     </div>
     <!-- Container to store top 5 Activities from  Yelp API-->
-    <div class="jumbotron container activity-container">
+    <div class="jumbotron container activity-container" id="activityResults">
         Activity Results Here
     </div>
     <!-- Container to store top 5 Restaurants from Yelp API -->
-    <div class="jumbotron container restaurant-container">
+    <div class="jumbotron container restaurant-container" id="restaurantResults">
         Restaurant Results Here
     </div>
 

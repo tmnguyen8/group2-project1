@@ -1,5 +1,33 @@
-/* start of marialize CSS */
+/* start of CSS */
 #imgLogo {
     height:48px;
     width:100px;
+}
+#flightSearch {
+    padding: 2px;
+    margin-top: 25px;
+}
+#flightResults {
+    margin-top: 25px;
+}
+#activityResults {
+    margin-top: 25px;
+}
+#restaurantResults {
+    margin-top: 25px;
+}
+#Departures{
+    padding: 2px;
+    text-align: center;
+}
+#Dates{
+    padding: 2px;
+    text-align: center;
+}
+#Arrivals{
+    padding: 2px;
+    text-align: center;
+}
+.inputBox{
+    padding: 2px;
 }
