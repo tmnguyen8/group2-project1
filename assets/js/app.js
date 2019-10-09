@@ -15,6 +15,18 @@ var activityList = [];
 // FUNCTIONS
 // **************************************************
 
+// Calendar
+var dateFormat = $( "#datepicker" ).datepicker( "option", "dateFormat" );
+ 
+
+$( function() {
+	$( "#datepicker" ).datepicker({
+		dateFormat: "yy-mm-dd"
+	  });
+	  
+});
+  
+
 // IATA code function 
 
 const options = {
