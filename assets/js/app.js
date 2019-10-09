@@ -1,22 +1,24 @@
 // GLOBAL VARIABLES
 // **************************************************
-var departureCity = "ATL";
-var arrivalCity = "LAX";
-var departureDate = "2019-10-30" //date in yyyy-mm-dd format;
+var departureCity = "";
+var arrivalCity = "";
+var departureDate = ""; //date in yyyy-mm-dd format;
+var arrivalDate = "2019-12-12"; ////NEED TO BE MODIFIED
 var currency = "USD";
-var cityCode;
 var carrier = [];
 var quoteList = [];
 var responseFlight = {};
 var carrierIdObj = {};
 var responseActivities = {};
+var responseRestaurants = {};
 var activityList = [];
+var restaurantList = [];
 
 // FUNCTIONS
 // **************************************************
 
 // Calendar
-var dateFormat = $( "#datepicker" ).datepicker( "option", "dateFormat" );
+var dateFormat = $("#datepicker").datepicker( "option", "dateFormat" );
  
 
 $( function() {
@@ -54,18 +56,20 @@ const options = {
   AirportInput("input-arrival", options)
 
 // GET Skyscanner API
-var requestFlight = {
-	"async": true,
-	"crossDomain": true,
-	"url": `https://cors-anywhere.herokuapp.com/https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/${currency}/en-US/${departureCity}-sky/${arrivalCity}-sky/${departureDate}?`,
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
-		"x-rapidapi-key": "7f95cad964msh067a2a02b0ea134p1cb269jsn874a5ce1bf6c"
-	}
-};
+
 // function to call skyscanner
 function callSkyscannerAPI() {
+	var requestFlight = {
+		"async": true,
+		"crossDomain": true,
+		"url": `https://cors-anywhere.herokuapp.com/https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/${departureCity}/${arrivalCity}/${departureDate}/${arrivalDate}?`,
+		"method": "GET",
+		"headers": {
+			"x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
+			"x-rapidapi-key": "7f95cad964msh067a2a02b0ea134p1cb269jsn874a5ce1bf6c"
+		}
+	};
+
 	$.ajax(requestFlight).done(function (responseFlight) {
 		responseFlight = responseFlight;
 		quoteList = responseFlight.Quotes;
@@ -84,16 +88,23 @@ function getCarrierIds(responseFlight) {
 };
 // function to display quote information
 function displayQuotes () {
+	$(".flight-container").empty();
 	for (i of quoteList) {
 		var carrierId = i.OutboundLeg.CarrierIds[0];
 		var carrier = carrierIdObj[carrierId];
+		var directStatus = "";
+		if (i.Direct === true) {
+			directStatus = "nonstop";
+		} else {
+			directStatus = "layover";
+		}
 		$(".flight-container").append(`
 			<div class="flight-quote row" style="border: 1px solid red">
 				<div class="flight-info col s12">
 					<div class="row">
 						<p class="airline col s4" data-airlineId="${i.OutboundLeg.CarrierIds[0]}">${carrier}</p>
 						<p class="col s4">${departureCity} to ${arrivalCity}</p>
-						<p class="col s4">Direct</p>
+						<p class="col s4">${directStatus}</p>
 					</div>
 				</div>
 				<h5 class="col s2">$${i.MinPrice}</h5>
@@ -107,27 +118,49 @@ var token = 'Bearer jFVJNfB3Noyg_PpbzsCaewJ62IvGkS-twRfhB13JwiqNJU8XSmm-F9q2oPC9
 var corURL = 'https://cors-anywhere.herokuapp.com';
 var yelpSearchURL = 'https://api.yelp.com/v3/businesses/search';
 var businessID = "";
-var requestObj = {
-	url: corURL + '/' + yelpSearchURL,
-	data: {term: "top 5 activities", location: "Los Angeles"},
-	headers: {'Authorization': token},
-	error: function (jqXHR, textStatus, errorThrown) {
-		console.log('AJAX error, jqXHR = ', jqXHR, ', textStatus = ',
-		textStatus, ', errorThrown = ', errorThrown)
-	}
-};
-// function to call Yelp
-function callYelpAPI() {
-	$.ajax(requestObj).done(function(response) {
+
+// function to call Yelp Activities
+function callYelpAct() {
+	var requestObjAct = {
+		url: corURL + '/' + yelpSearchURL,
+		data: {term: "top 5 activities", location: arrivalCity},
+		headers: {'Authorization': token},
+		error: function (jqXHR, textStatus, errorThrown) {
+			console.log('AJAX error, jqXHR = ', jqXHR, ', textStatus = ',
+			textStatus, ', errorThrown = ', errorThrown)
+		}
+	};
+
+	$.ajax(requestObjAct).done(function(response) {
 		responseActivities = response;
 		activityList = responseActivities.businesses;
 		// businessID = response.businesses[0].id;
 		displayActivities();
-	});
-	
+	});	
 }
 
+// function to call Yelp Restaurants
+function callYelpRest() {
+	var requestObjRest = {
+		url: corURL + '/' + yelpSearchURL,
+		data: {term: "restaurants", location: arrivalCity},
+		headers: {'Authorization': token},
+		error: function (jqXHR, textStatus, errorThrown) {
+			console.log('AJAX error, jqXHR = ', jqXHR, ', textStatus = ',
+			textStatus, ', errorThrown = ', errorThrown)
+		}
+	};
+
+	$.ajax(requestObjRest).done(function(response) {
+		responseRestaurants = response;
+		restaurantList = responseRestaurants.businesses;
+		// businessID = response.businesses[0].id;
+		displayRestaurants();
+	});	
+}
+// Display Top Activities
 function displayActivities(){
+	$(".activity-container").empty();
 	console.log(activityList);
 	for (i of activityList.slice(0,5)) {
 		var id = i.id;
@@ -151,16 +184,44 @@ function displayActivities(){
 	}
 }
 
+// Display Top Restaurants
+function displayRestaurants(){
+	$(".restaurant-container").empty();
+	console.log(restaurantList);
+	for (i of restaurantList.slice(0,5)) {
+		var id = i.id;
+		var name = i.name;
+		var review = i.rating;
+		var url = i.url;
+		var imgURL = i.image_url;
+		var address = `${i.location.address1} ${i.location.city} ${i.location.zip_code}`
+		$(".restaurant-container").append(`
+			<a href="${url}" class="restaurant row" style="border: 1px solid red">
+				<div class="restuarant-info col s12">
+					<div class="row">
+						<p class="name col s4" data-restId="${id}">${name}</p>
+						<p class="col s4">Rating: ${review}</p>
+						<p class="col s4">${address}</p>
+					</div>
+				</div>
+				<img src="${imgURL}" class="rest-img" style="width: 100px; height:100px">
+			</a>
+		`);
+	}
+}
+
 // EXECUTIONS
 // **************************************************
 
 $(document).on("click", ".search-btn", function(event) {
 	event.preventDefault();
-	departureCity = $(".input-departure").val().trim();
-	arrivalCity = $(".input-arrival").val().trim();
-	date = $(".input-date").val().trim();
+	departureCity = $("input.input-departure").val().trim().slice(0,3);
+	arrivalCity = $("input.input-arrival").val().trim().slice(0,3);
+	departureDate = $(".input-date").val();
+	console.log(`depart=${departureCity} | arrive=${arrivalCity} | date=${departureDate}`)
 	callSkyscannerAPI();
-	callYelpAPI();
+	callYelpAct();
+	callYelpRest();
 });
 
 
