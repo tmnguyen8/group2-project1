@@ -1,11 +1,17 @@
 /* start of CSS */
 #imgLogo {
-    height:48px;
-    width:100px;
+    height:75px;
+    width:150px;
+    margin-top: 100px;
+}
+.input-text {
+    text-align: center;
+    padding: 5px;
 }
 #flightSearch {
     padding: 2px;
     margin-top: 25px;
+    background-color: rgba(155,0,0,0.6);
 }
 #flightResults {
     margin-top: 25px;
@@ -17,17 +23,24 @@
     margin-top: 25px;
 }
 #Departures{
-    padding: 2px;
+    padding: 5px;
     text-align: center;
 }
 #Dates{
-    padding: 2px;
+    padding: 5px;
     text-align: center;
 }
 #Arrivals{
-    padding: 2px;
+    padding: 5px;
     text-align: center;
 }
 .inputBox{
     padding: 2px;
+}
+body {
+    background-color:white;
+}
+.banner {
+    height: 600px;
+    background-image: url("../images/Background_dubai.jpg");
 }

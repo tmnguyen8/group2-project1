@@ -14,8 +14,24 @@
 <body>
     <nav class="banner red darken-4">
         <img class="img-responsive offset-6" id="imgLogo" src="assets/images/Logo.png" alt="Logo">
-    </nav>
+        <div class="jumbotron container search-container" id="flightSearch">
+            <div class="row">
+                <div class="col s12 m6 l3" id="Departures">
+                    <input type="text" class="input-departure input-text" placeholder="Departure City">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-control-input" id="favorites">
+                        <label class="form-control-label" for="favorite">Display Favorite</label>
+                    </div>
+                </div>
+                <div class="col s12 m6 l3" id="Arrivals">
+                    <input type="text" class="input-arrival input-text" placeholder="Arrival City">
+                </div>
+                <div class="col s12 m6 l3" id="Dates">
+                    <input type="text" class="input-date input-text" placeholder="Departure Date">
+                    <button class="fas fa-search search-btn"></button>
+                </div>
     
+
     <div class="jumbotron container search-container" id="flightSearch">
         <div class="row">
             <div class="col s12 m6 l3" id="Departures">
@@ -37,9 +53,12 @@
             <div class="form-check">
                 <input type="checkbox" class="form-control-input" id="favorites">
                 <label class="form-control-label" for="favorite">Display Favorite</label>
+
             </div>
         </div>
-    </div>
+    </nav>
+
+
     <!-- Container to store all of flight search information from Skyscanner-->
 
     <div class="jumbotron container flight-container" id="flightResults">
