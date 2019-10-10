@@ -6,29 +6,37 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!--Import materialize.css-->
+    <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+            
     <link rel="stylesheet" href="./assets/css/style.css">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <title>A Getaway</title>
 </head>
 <body>
     <nav class="banner red darken-4">
         <img class="img-responsive offset-6" id="imgLogo" src="assets/images/Logo.png" alt="Logo">
+
         <div class="jumbotron container search-container" id="flightSearch">
             <div class="row">
                 <div class="col s12 m6 l3" id="Departures">
                     <input type="text" class="input-departure input-text" placeholder="Departure City" id="input-departure">
-                    <div class="form-check">
-                        <input type="checkbox" class="form-control-input" id="favorites">
-                        <label class="form-control-label" for="favorite">Display Favorite</label>
-                    </div>
+                    <button class="btn"><i class="fa fa-meteor"></i>  Display Favorite</button>
                 </div>
                 <div class="col s12 m6 l3" id="Arrivals">
                     <input type="text" class="input-arrival input-text" placeholder="Arrival City" id="input-arrival">
+                    <button class="btn"><i class="fa fa-star"></i>  Save Favorite</button>
                 </div>
                 <div class="col s12 m6 l3" id="Dates">
                     <input type="text" class="input-date input-text" placeholder="Departure Date" id="datepicker">
-                    <button class="fas fa-search search-btn"></button>
+                    <button class="btn"><i class="fa fa-rocket"></i>  Search</button>
+
                 </div>
             </div>
         </div>
