@@ -44,3 +44,9 @@ body {
     height: 600px;
     background-image: url("../images/Background_dubai.jpg");
 }
+.material-icons {
+    position: relative;
+    top:1px;
+    bottom:3px;
+    right: 10px;
+}
