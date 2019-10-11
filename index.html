@@ -27,16 +27,15 @@
             <div class="row">
                 <div class="col s12 m6 l3" id="Departures">
                     <input type="text" class="input-departure input-text" placeholder="Departure City" id="input-departure">
-                    <button class="btn"><i class="fa fa-meteor"></i>  Display Favorite</button>
+                    <button class="btn display-fav-btn"><i class="fa fa-meteor"></i>  Display Favorite</button>
                 </div>
                 <div class="col s12 m6 l3" id="Arrivals">
                     <input type="text" class="input-arrival input-text" placeholder="Arrival City" id="input-arrival">
-                    <button class="btn"><i class="fa fa-star"></i>  Save Favorite</button>
+                    <button class="btn add-fav-btn"><i class="fa fa-star"></i>  Save Favorite</button>
                 </div>
                 <div class="col s12 m6 l3" id="Dates">
                     <input type="text" class="input-date input-text" placeholder="Departure Date" id="datepicker">
-                    <button class="btn"><i class="fa fa-rocket"></i>  Search</button>
-
+                    <button class="btn search-btn"><i class="fa fa-rocket"></i>  Search</button>
                 </div>
             </div>
         </div>
@@ -55,6 +54,10 @@
     <!-- Container to store top 5 Restaurants from Yelp API -->
     <div class="jumbotron container restaurant-container" id="restaurantResults">
         Restaurant Results Here
+    </div>
+    <!-- container to store favorites searches-->
+    <div class="jumbotron container favorite-container" id="favoriteResults">
+
     </div>
 
     <!-- JQUERY and Javascript -->
