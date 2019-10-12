@@ -21,15 +21,18 @@
     margin-top: 25px;
     background-color: rgba(155,0,0,0.6);
 }
-#flightResults {
+.flight-container {
     margin-top: 25px;
     align-content: center;
 }
-#activityResults {
+.activity-container {
     margin-top: 25px;
 }
-#restaurantResults {
+.restaurant-container {
     margin-top: 25px;
+}
+.container-title {
+    color: white;
 }
 #Departures{
     padding: 5px;
