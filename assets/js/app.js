@@ -230,7 +230,7 @@ function displayFavList() {
 
 	for (i of favList) {
 		console.log(i);
-		$(".favorite-container").append(`
+		$(".favorite-results").append(`
 			<ul class="collection">
 				<li class="collection-item">		
 					<span class="fav-flight-span">${i.departureCity} to ${i.arrivalCity}</span>
