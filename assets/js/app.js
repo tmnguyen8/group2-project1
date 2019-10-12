@@ -90,9 +90,9 @@ function getCarrierIds(responseFlight) {
 };
 // function to display quote information
 function displayQuotes () {
-	$(".flight-container").empty();
+	$(".flight-results").empty();
 	if (quoteList.length === 0) {
-		$(".flight-container").append(`
+		$(".flight-results").append(`
 			<h4 class="no-result-text"><i class="fas fa-heart-broken"></i> Sorry no result found for this flight search <i class="fas fa-heart-broken"></i></h4>
 		`);
 	} else {
@@ -105,9 +105,8 @@ function displayQuotes () {
 			} else {
 				directStatus = "layover";
 			};
-			$(".flight-container").append(`
+			$(".flight-results").append(`
 				<div class="flight-quote row">
-				<h5>Flight:</h5>
 					<div class="flight-info col s12">
 						<div class="row">
 							<p class="airline col s4" data-airlineId="${i.OutboundLeg.CarrierIds[0]}">${carrier}</p>
@@ -170,7 +169,7 @@ function callYelpRest() {
 }
 // Display Top Activities
 function displayActivities(){
-	$(".activity-container").empty();
+	$(".activity-results").empty();
 	// console.log(activityList);
 	for (i of activityList.slice(0,5)) {
 		var id = i.id;
@@ -179,10 +178,9 @@ function displayActivities(){
 		var url = i.url;
 		var imgURL = i.image_url;
 		var address = `${i.location.address1} ${i.location.city} ${i.location.zip_code}`
-		$(".activity-container").append(`
+		$(".activity-results").append(`
 			<a href="${url}" class="activity row">
 				<div class="activity-info col s12">
-				<h5>Activity:</h5>
 					<div class="row">
 						<p class="name col s4" data-activityId="${id}">${name}</p>
 						<p class="col s4">Rating: ${review}</p>
@@ -197,7 +195,7 @@ function displayActivities(){
 
 // Display Top Restaurants
 function displayRestaurants(){
-	$(".restaurant-container").empty();
+	$(".restaurant-results").empty();
 	// console.log(restaurantList);
 	for (i of restaurantList.slice(0,5)) {
 		var id = i.id;
@@ -206,10 +204,9 @@ function displayRestaurants(){
 		var url = i.url;
 		var imgURL = i.image_url;
 		var address = `${i.location.address1} ${i.location.city} ${i.location.zip_code}`
-		$(".restaurant-container").append(`
+		$(".restaurant-results").append(`
 			<a href="${url}" class="restaurant row">
 				<div class="restuarant-info col s12">
-				<h5>Restaurant:</h5>
 					<div class="row">
 						<p class="name col s4" data-restId="${id}">${name}</p>
 						<p class="col s4">Rating: ${review}</p>
@@ -224,7 +221,7 @@ function displayRestaurants(){
 
 // display favorites
 function displayFavList() {
-	$(".favorite-container").empty();
+	$(".favorite-results").empty();
 	var localStorageFav = JSON.parse(localStorage.getItem("favorites"));
 	favList = localStorageFav;
 	$(".flight-container").hide();
