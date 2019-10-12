@@ -92,7 +92,7 @@ function displayQuotes () {
 	$(".flight-container").empty();
 	if (quoteList.length === 0) {
 		$(".flight-container").append(`
-			<h4><i class="fas fa-heart-broken"></i> Sorry no result found for this flight search <i class="fas fa-heart-broken"></i></h4>
+			<h4 class="no-result-text"><i class="fas fa-heart-broken"></i> Sorry no result found for this flight search <i class="fas fa-heart-broken"></i></h4>
 		`);
 	} else {
 		for (i of quoteList) {
@@ -109,8 +109,8 @@ function displayQuotes () {
 					<div class="flight-info col s12">
 						<div class="row">
 							<p class="airline col s4" data-airlineId="${i.OutboundLeg.CarrierIds[0]}">${carrier}</p>
-							<p class="col s4">${departureCity} to ${arrivalCity}</p>
-							<p class="col s4">${directStatus}</p>
+							<p class="col s4 flight-city">${departureCity} to ${arrivalCity}</p>
+							<p class="col s4 flight-status">${directStatus}</p>
 						</div>
 					</div>
 					<h5 class="min-price col s2">$${i.MinPrice}</h5>
@@ -232,10 +232,10 @@ function displayFavList() {
 		$(".favorite-container").append(`
 			<ul class="collection">
 				<li class="collection-item">		
-					<span>${i.departureCity} to ${i.arrivalCity}</span>
-					<p>Departure Date: ${i.departureDate}</p>
+					<span class="fav-flight-span">${i.departureCity} to ${i.arrivalCity}</span>
+					<p class="fav-departure-text">Departure Date: ${i.departureDate}</p>
 					<button class="btn" id="fav-item-btn" data-departureCity="${i.departureCity}" data-arrivalCity="${i.arrivalCity}" data-departureDate="${i.departureDate}">
-						<i class="fas fa-heart"></i>
+						<i class="fav-heart fas fa-heart"></i>
 					</button>
 				</li>
 			</ul>
@@ -245,11 +245,19 @@ function displayFavList() {
 
 // EXECUTIONS
 // **************************************************
+// start the page with no display flight, activity, restaurants
+$(".flight-container").hide();
+$(".activity-container").hide();
+$(".restaurant-container").hide();
+$(".favorite-container").hide();
 
 $(document).on("click", ".search-btn", function(event) {
 	event.preventDefault();
 	// hide favorite
 	$(".favorite-container").hide();
+	$(".flight-container").show();
+	$(".activity-container").show();
+	$(".restaurant-container").show();
 	departureCity = $("input.input-departure").val().trim().slice(0,3);
 	arrivalCity = $("input.input-arrival").val().trim().slice(0,3);
 	departureDate = $(".input-date").val();
