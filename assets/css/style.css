@@ -23,6 +23,7 @@
 }
 #flightResults {
     margin-top: 25px;
+    align-content: center;
 }
 #activityResults {
     margin-top: 25px;
@@ -81,7 +82,6 @@ body {
 }
 .ui-datepicker-div{
     align-content: center;
-    /* position: fixed; */
 }
 .ui-datepicker-next:hover{
     background-color: #2E6077;
@@ -100,6 +100,7 @@ body {
 .flight-quote{
     background-color: #FEEED7;
     border-radius: 15px;
+    align-content: center;
 }
 .jumbotron {
     background-color: #2E6077;
@@ -152,4 +153,12 @@ body {
 .collection-item:hover{
     color:rgba(155,0,0,1);
     background-color: #FEEED7;
+}
+.fav-departure-text{
+    max-width: 200px;
+    padding:0px;
+    margin:0px;
+}
+#fav-item-btn {
+    margin-left: 475px;
 }

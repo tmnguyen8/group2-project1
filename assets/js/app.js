@@ -106,6 +106,7 @@ function displayQuotes () {
 			};
 			$(".flight-container").append(`
 				<div class="flight-quote row">
+				<h5>Flight:</h5>
 					<div class="flight-info col s12">
 						<div class="row">
 							<p class="airline col s4" data-airlineId="${i.OutboundLeg.CarrierIds[0]}">${carrier}</p>
@@ -180,6 +181,7 @@ function displayActivities(){
 		$(".activity-container").append(`
 			<a href="${url}" class="activity row">
 				<div class="activity-info col s12">
+				<h5>Activity:</h5>
 					<div class="row">
 						<p class="name col s4" data-activityId="${id}">${name}</p>
 						<p class="col s4">Rating: ${review}</p>
@@ -206,6 +208,7 @@ function displayRestaurants(){
 		$(".restaurant-container").append(`
 			<a href="${url}" class="restaurant row">
 				<div class="restuarant-info col s12">
+				<h5>Restaurant:</h5>
 					<div class="row">
 						<p class="name col s4" data-restId="${id}">${name}</p>
 						<p class="col s4">Rating: ${review}</p>
