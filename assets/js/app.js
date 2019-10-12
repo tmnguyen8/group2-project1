@@ -105,7 +105,7 @@ function displayQuotes () {
 				directStatus = "layover";
 			};
 			$(".flight-container").append(`
-				<div class="flight-quote row" style="border: 1px solid red">
+				<div class="flight-quote row">
 					<div class="flight-info col s12">
 						<div class="row">
 							<p class="airline col s4" data-airlineId="${i.OutboundLeg.CarrierIds[0]}">${carrier}</p>
@@ -113,7 +113,7 @@ function displayQuotes () {
 							<p class="col s4">${directStatus}</p>
 						</div>
 					</div>
-					<h5 class="col s2">$${i.MinPrice}</h5>
+					<h5 class="min-price col s2">$${i.MinPrice}</h5>
 				</div>
 			`);
 		};
@@ -178,7 +178,7 @@ function displayActivities(){
 		var imgURL = i.image_url;
 		var address = `${i.location.address1} ${i.location.city} ${i.location.zip_code}`
 		$(".activity-container").append(`
-			<a href="${url}" class="activity row" style="border: 1px solid red">
+			<a href="${url}" class="activity row">
 				<div class="activity-info col s12">
 					<div class="row">
 						<p class="name col s4" data-activityId="${id}">${name}</p>
@@ -204,7 +204,7 @@ function displayRestaurants(){
 		var imgURL = i.image_url;
 		var address = `${i.location.address1} ${i.location.city} ${i.location.zip_code}`
 		$(".restaurant-container").append(`
-			<a href="${url}" class="restaurant row" style="border: 1px solid red">
+			<a href="${url}" class="restaurant row">
 				<div class="restuarant-info col s12">
 					<div class="row">
 						<p class="name col s4" data-restId="${id}">${name}</p>
