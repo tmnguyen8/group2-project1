@@ -7,6 +7,7 @@
 .input-text {
     text-align: center;
     padding: 5px;
+    color: white;
 }
 #flightSearch {
     padding: 2px;
@@ -44,9 +45,48 @@ body {
     height: 600px;
     background-image: url("../images/Background_dubai.jpg");
 }
-.material-icons {
+.autocomplete-results {
+    padding: 0px;
+    background-color:  rgba(155,0,0,1);
+}
+.single-results {
+    max-height: 15px;
+    max-block-size: 15px;
+    padding: 0px;
+    background-color:  rgba(155,0,0,1);
+}
+.autocomplete-wrapper {
+    max-height: 200px;
+    padding: 0px;
+}
+.ui-datepicker {
+    background-color:  rgba(155,0,0,1);
+    color: white;
+    padding:5px;
+    text-decoration: none;
+    max-width: 300px;
+}
+.ui-datepicker-prev {
+    margin-right: 135px;
+}
+.ui-datepicker-month{
+    margin-left: 50px;
+}
+.ui-datepicker-div{
+    align-content: center;
     position: relative;
-    top:1px;
-    bottom:3px;
-    right: 10px;
+}
+.ui-datepicker-next:hover{
+    background-color: darkcyan;
+}
+.ui-datepicker-prev:hover{
+    background-color: darkcyan;
+}
+.ui-state-default:hover{
+    background-color: darkcyan;
+    color:white;
+    font-size: 150%;
+}
+.ui-state-default{
+    color:white;
 }
