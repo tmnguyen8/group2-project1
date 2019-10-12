@@ -49,7 +49,7 @@ body {
     background-color:white;
 }
 .banner {
-    height: 600px;
+    height: 625px;
     background-image: url("../images/Background_dubai.jpg");
 }
 .autocomplete-results {
@@ -81,7 +81,7 @@ body {
 }
 .ui-datepicker-div{
     align-content: center;
-    position: relative;
+    /* position: fixed; */
 }
 .ui-datepicker-next:hover{
     background-color: #2E6077;
