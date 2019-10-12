@@ -63,7 +63,8 @@ function callSkyscannerAPI() {
 	var requestFlight = {
 		"async": true,
 		"crossDomain": true,
-		"url": `https://cors-anywhere.herokuapp.com/https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/${departureCity}/${arrivalCity}/${departureDate}/${arrivalDate}?`,
+		"url": `https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/${departureCity}-sky/${arrivalCity}-sky/${arrivalDate}?`,
+		// "url": `https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/${departureCity}/${arrivalCity}/${departureDate}/${arrivalDate}?`,
 		"method": "GET",
 		"headers": {
 			"x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
