@@ -9,6 +9,13 @@
     padding: 5px;
     color: white;
 }
+.btn {
+    background-color: #2E6077;
+}
+.btn:hover{
+    background-color: #FEEED7;
+    color: black;
+}
 #flightSearch {
     padding: 2px;
     margin-top: 25px;
@@ -56,7 +63,7 @@ body {
     background-color:  rgba(155,0,0,1);
 }
 .autocomplete-wrapper {
-    max-height: 200px;
+    max-height: 90px;
     padding: 0px;
 }
 .ui-datepicker {
@@ -77,16 +84,72 @@ body {
     position: relative;
 }
 .ui-datepicker-next:hover{
-    background-color: darkcyan;
+    background-color: #2E6077;
 }
 .ui-datepicker-prev:hover{
-    background-color: darkcyan;
+    background-color: #2E6077;
 }
 .ui-state-default:hover{
-    background-color: darkcyan;
+    background-color: #2E6077;
     color:white;
     font-size: 150%;
 }
 .ui-state-default{
     color:white;
+}
+.flight-quote{
+    background-color: #FEEED7;
+    border-radius: 15px;
+}
+.jumbotron {
+    background-color: #2E6077;
+    border-radius: 25px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+}
+.activity {
+    background-color: #FEEED7;
+    border-radius: 15px;
+    padding: 10px;
+    color: black;
+}
+.favorite-container {
+    margin-top: 25px;
+}
+.restaurant {
+    background-color: #FEEED7;
+    border-radius: 15px;
+    padding: 10px;
+    color: black;
+}
+.activity:hover {
+    color:rgba(155,0,0,1);
+    background-color: #E4D3B9;
+}
+.restaurant:hover {
+    color:rgba(155,0,0,1);
+    background-color: #E4D3B9;
+}
+.flight-quote:hover{
+    color:rgba(155,0,0,1);
+    background-color: #E4D3B9;
+}
+.min-price{
+    color: rgb(0, 199, 0);
+}
+.collection {
+    background-color:#FEEED7;
+    border-radius: 15px;
+    padding: 10px;
+    color: black;
+}
+.collection-item{
+    background-color:white;
+    border-radius: 15px;
+    padding: 10px;
+    color: black;  
+}
+.collection-item:hover{
+    color:rgba(155,0,0,1);
+    background-color: #FEEED7;
 }
