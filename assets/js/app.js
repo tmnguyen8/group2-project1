@@ -25,9 +25,14 @@ $( function() {
 	$( "#datepicker" ).datepicker({
 		dateFormat: "yy-mm-dd"
 	  });
+		$( "#datepicker" ).datepicker();
+		$( "#anim" ).on( "change", function() {
+		  $( "#datepicker" ).datepicker( "option", "showAnim", $( this ).val() );
+		});
+	
+	});
 	  
-});
-  
+
 
 // IATA code function 
 
