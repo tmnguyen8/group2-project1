@@ -13,6 +13,7 @@ var responseActivities = {};
 var responseRestaurants = {};
 var activityList = [];
 var restaurantList = [];
+var favList = [];
 
 // FUNCTIONS
 // **************************************************
@@ -67,7 +68,8 @@ function callSkyscannerAPI() {
 	var requestFlight = {
 		"async": true,
 		"crossDomain": true,
-		"url": `https://cors-anywhere.herokuapp.com/https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/${departureCity}/${arrivalCity}/${departureDate}/${arrivalDate}?`,
+		"url": `https://cors-anywhere.herokuapp.com/https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/${departureCity}-sky/${arrivalCity}-sky/${arrivalDate}?`,
+		// "url": `https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/${departureCity}/${arrivalCity}/${departureDate}/${arrivalDate}?`,
 		"method": "GET",
 		"headers": {
 			"x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
@@ -75,7 +77,7 @@ function callSkyscannerAPI() {
 		}
 	};
 
-	$.ajax(requestFlight).done(function (responseFlight) {
+	$.ajax(requestFlight).then(function (responseFlight) {
 		responseFlight = responseFlight;
 		quoteList = responseFlight.Quotes;
 		carrierIdObj = getCarrierIds(responseFlight);
@@ -93,29 +95,36 @@ function getCarrierIds(responseFlight) {
 };
 // function to display quote information
 function displayQuotes () {
-	$(".flight-container").empty();
-	for (i of quoteList) {
-		var carrierId = i.OutboundLeg.CarrierIds[0];
-		var carrier = carrierIdObj[carrierId];
-		var directStatus = "";
-		if (i.Direct === true) {
-			directStatus = "nonstop";
-		} else {
-			directStatus = "layover";
-		}
-		$(".flight-container").append(`
-			<div class="flight-quote row" style="border: 1px solid red">
-				<div class="flight-info col s12">
-					<div class="row">
-						<p class="airline col s4" data-airlineId="${i.OutboundLeg.CarrierIds[0]}">${carrier}</p>
-						<p class="col s4">${departureCity} to ${arrivalCity}</p>
-						<p class="col s4">${directStatus}</p>
-					</div>
-				</div>
-				<h5 class="col s2">$${i.MinPrice}</h5>
-			</div>
+	$(".flight-results").empty();
+	if (quoteList.length === 0) {
+		$(".flight-results").append(`
+			<h4 class="no-result-text"><i class="fas fa-heart-broken"></i> Sorry no result found for this flight search <i class="fas fa-heart-broken"></i></h4>
 		`);
-	};
+	} else {
+		for (i of quoteList) {
+			var carrierId = i.OutboundLeg.CarrierIds[0];
+			var carrier = carrierIdObj[carrierId];
+			var directStatus = "";
+			if (i.Direct === true) {
+				directStatus = "nonstop";
+			} else {
+				directStatus = "layover";
+			};
+			$(".flight-results").append(`
+				<div class="flight-quote row">
+					<div class="flight-info col s12">
+						<div class="row">
+							<p class="airline col s4" data-airlineId="${i.OutboundLeg.CarrierIds[0]}">${carrier}</p>
+							<p class="col s4 flight-city">${departureCity} to ${arrivalCity}</p>
+							<p class="col s4 flight-status">${directStatus}</p>
+						</div>
+					</div>
+					<h5 class="min-price col s2">$${i.MinPrice}</h5>
+				</div>
+			`);
+		};
+	}
+	
 };
 
 // GET Yelp API
@@ -165,8 +174,8 @@ function callYelpRest() {
 }
 // Display Top Activities
 function displayActivities(){
-	$(".activity-container").empty();
-	console.log(activityList);
+	$(".activity-results").empty();
+	// console.log(activityList);
 	for (i of activityList.slice(0,5)) {
 		var id = i.id;
 		var name = i.name;
@@ -174,8 +183,8 @@ function displayActivities(){
 		var url = i.url;
 		var imgURL = i.image_url;
 		var address = `${i.location.address1} ${i.location.city} ${i.location.zip_code}`
-		$(".activity-container").append(`
-			<a href="${url}" class="activity row" style="border: 1px solid red">
+		$(".activity-results").append(`
+			<a href="${url}" class="activity row">
 				<div class="activity-info col s12">
 					<div class="row">
 						<p class="name col s4" data-activityId="${id}">${name}</p>
@@ -191,8 +200,8 @@ function displayActivities(){
 
 // Display Top Restaurants
 function displayRestaurants(){
-	$(".restaurant-container").empty();
-	console.log(restaurantList);
+	$(".restaurant-results").empty();
+	// console.log(restaurantList);
 	for (i of restaurantList.slice(0,5)) {
 		var id = i.id;
 		var name = i.name;
@@ -200,8 +209,8 @@ function displayRestaurants(){
 		var url = i.url;
 		var imgURL = i.image_url;
 		var address = `${i.location.address1} ${i.location.city} ${i.location.zip_code}`
-		$(".restaurant-container").append(`
-			<a href="${url}" class="restaurant row" style="border: 1px solid red">
+		$(".restaurant-results").append(`
+			<a href="${url}" class="restaurant row">
 				<div class="restuarant-info col s12">
 					<div class="row">
 						<p class="name col s4" data-restId="${id}">${name}</p>
@@ -212,14 +221,49 @@ function displayRestaurants(){
 				<img src="${imgURL}" class="rest-img" style="width: 100px; height:100px">
 			</a>
 		`);
-	}
-}
+	};
+};
+
+// display favorites
+function displayFavList() {
+	$(".favorite-results").empty();
+	var localStorageFav = JSON.parse(localStorage.getItem("favorites"));
+	favList = localStorageFav;
+	$(".flight-container").hide();
+	$(".activity-container").hide();
+	$(".restaurant-container").hide();
+
+	for (i of favList) {
+		console.log(i);
+		$(".favorite-results").append(`
+			<ul class="collection">
+				<li class="collection-item">		
+					<span class="fav-flight-span">${i.departureCity} to ${i.arrivalCity}</span>
+					<p class="fav-departure-text">Departure Date: ${i.departureDate}</p>
+					<button class="btn" id="fav-item-btn" data-departureCity="${i.departureCity}" data-arrivalCity="${i.arrivalCity}" data-departureDate="${i.departureDate}">
+						<i class="fav-heart fas fa-heart"></i>
+					</button>
+				</li>
+			</ul>
+		`);
+	};
+};
 
 // EXECUTIONS
 // **************************************************
+// start the page with no display flight, activity, restaurants
+$(".flight-container").hide();
+$(".activity-container").hide();
+$(".restaurant-container").hide();
+$(".favorite-container").hide();
 
 $(document).on("click", ".search-btn", function(event) {
 	event.preventDefault();
+	// hide favorite
+	$(".favorite-container").hide();
+	$(".flight-container").show();
+	$(".activity-container").show();
+	$(".restaurant-container").show();
 	departureCity = $("input.input-departure").val().trim().slice(0,3);
 	arrivalCity = $("input.input-arrival").val().trim().slice(0,3);
 	departureDate = $(".input-date").val();
@@ -229,5 +273,41 @@ $(document).on("click", ".search-btn", function(event) {
 	callYelpRest();
 });
 
+$(document).on("click", ".add-fav-btn", function(event) {
+	event.preventDefault();
+	if ((departureCity !== "") && (arrivalCity !== "") && (departureDate !== "")) {
+		favList.push({
+			departureCity: departureCity,
+			arrivalCity: arrivalCity,
+			departureDate: departureDate
+		});
+		localStorage.setItem("favorites", JSON.stringify(favList));
+	}	
+});
+
+$(document).on("click", ".display-fav-btn", function(event) {
+	event.preventDefault();
+	$(".flight-container").hide();
+	$(".activity-container").hide();
+	$(".restaurant-container").hide();
+	$(".favorite-container").show();
+	displayFavList();
+});
+
+$(document).on("click", "#fav-item-btn", function(event) {
+	event.preventDefault();
+	// show flight, activity and restaurant container; hide favorite container
+	$(".flight-container").show();
+	$(".activity-container").show();
+	$(".restaurant-container").show();
+	$(".favorite-container").hide();
+	departureCity = $(this).attr("data-departureCity");
+	arrivalCity = $(this).attr("data-arrivalCity");
+	departureDate = $(this).attr("data-departureDate");
+	console.log(departureCity, arrivalCity, departureDate)
+	callSkyscannerAPI();
+	callYelpAct();
+	callYelpRest();
+});
 
 

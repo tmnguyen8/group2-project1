@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!--Import materialize.css-->
     <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
             
     <link rel="stylesheet" href="./assets/css/style.css">
 
@@ -31,17 +31,16 @@
         <div class="jumbotron container search-container" id="flightSearch">
             <div class="row">
                 <div class="col s12 m6 l3" id="Departures">
+                    <button class="btn display-fav-btn"><i class="fa fa-meteor"></i>  Display Favorite</button>
                     <input type="text" class="input-departure input-text" placeholder="Departure City" id="input-departure">
-                    <button class="btn"><i class="fa fa-meteor"></i>  Display Favorite</button>
                 </div>
                 <div class="col s12 m6 l3" id="Arrivals">
+                    <button class="btn add-fav-btn"><i class="fa fa-star"></i>  Save Favorite</button>
                     <input type="text" class="input-arrival input-text" placeholder="Arrival City" id="input-arrival">
-                    <button class="btn"><i class="fa fa-star"></i>  Save Favorite</button>
                 </div>
-                <div class="col s12 m6 l3">
+                <div class="col s12 m6 l3" id="Dates">
+                    <button class="btn search-btn"><i class="fa fa-rocket"></i>  Search</button>
                     <input type="text" class="input-date input-text" placeholder="Departure Date" id="datepicker">
-                    <button class="btn"><i class="fa fa-rocket"></i>  Search</button>
-
                 </div>
             </div>
         </div>
@@ -49,17 +48,28 @@
 
 
     <!-- Container to store all of flight search information from Skyscanner-->
+    <div class="jumbotron container flight-container" >
+        <h5 class="container-title">Flights</h5>
+        <div class="flight-results" id="flightResults" >
+        </div>
+    </div>
 
-    <div class="jumbotron container flight-container" id="flightResults">
-        Flight Results Here
-    </div>
     <!-- Container to store top 5 Activities from  Yelp API-->
-    <div class="jumbotron container activity-container" id="activityResults">
-        Activity Results Here
+    <div class="jumbotron container activity-container">
+        <h5 class="container-title">Activities</h5>
+        <div class="activity-results" id="activityResults"></div>
     </div>
+
     <!-- Container to store top 5 Restaurants from Yelp API -->
     <div class="jumbotron container restaurant-container" id="restaurantResults">
-        Restaurant Results Here
+        <h5 class="container-title">Restaurants</h5>
+        <div class="restaurant-results" id="restaurantResults"></div>
+    </div>
+
+    <!-- container to store favorites searches-->
+    <div class="jumbotron container favorite-container" id="favoriteResults">
+        <h5 class="container-title">Favorites</h5>
+        <div class="favorite-results" id="favoriteResults"></div>
     </div>
     <!-- <footer class="footer">
             <div>

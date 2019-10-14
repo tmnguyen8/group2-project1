@@ -7,21 +7,32 @@
 .input-text {
     text-align: center;
     padding: 5px;
-    color:white;
+    color: white;
+}
+.btn {
+    background-color: #2E6077;
+}
+.btn:hover{
+    background-color: #FEEED7;
+    color: black;
 }
 #flightSearch {
     padding: 2px;
     margin-top: 25px;
     background-color: rgba(155,0,0,0.6);
 }
-#flightResults {
+.flight-container {
+    margin-top: 25px;
+    align-content: center;
+}
+.activity-container {
     margin-top: 25px;
 }
-#activityResults {
+.restaurant-container {
     margin-top: 25px;
 }
-#restaurantResults {
-    margin-top: 25px;
+.container-title {
+    color: white;
 }
 #Departures{
     padding: 5px;
@@ -42,15 +53,116 @@ body {
     background-color:white;
 }
 .banner {
-    height: 600px;
+    height: 625px;
     background-image: url("../images/Background_dubai.jpg");
 }
-.material-icons {
-    position: relative;
-    top:1px;
-    bottom:3px;
-    right: 10px;
+.autocomplete-results {
+    padding: 0px;
+    background-color:  rgba(155,0,0,1);
 }
+.single-results {
+    max-height: 15px;
+    max-block-size: 15px;
+    padding: 0px;
+    background-color:  rgba(155,0,0,1);
+}
+.autocomplete-wrapper {
+    max-height: 90px;
+    padding: 0px;
+}
+.ui-datepicker {
+    background-color:  rgba(155,0,0,1);
+    color: white;
+    padding:5px;
+    text-decoration: none;
+    max-width: 300px;
+}
+.ui-datepicker-prev {
+    margin-right: 135px;
+}
+.ui-datepicker-month{
+    margin-left: 50px;
+}
+.ui-datepicker-div{
+    align-content: center;
+}
+.ui-datepicker-next:hover{
+    background-color: #2E6077;
+}
+.ui-datepicker-prev:hover{
+    background-color: #2E6077;
+}
+.ui-state-default:hover{
+    background-color: #2E6077;
+    color:white;
+    font-size: 150%;
+}
+.ui-state-default{
+    color:white;
+}
+.flight-quote{
+    background-color: #FEEED7;
+    border-radius: 15px;
+    align-content: center;
+}
+.jumbotron {
+    background-color: #2E6077;
+    border-radius: 25px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+}
+.activity {
+    background-color: #FEEED7;
+    border-radius: 15px;
+    padding: 10px;
+    color: black;
+}
+.favorite-container {
+    margin-top: 25px;
+}
+.restaurant {
+    background-color: #FEEED7;
+    border-radius: 15px;
+    padding: 10px;
+    color: black;
+}
+.activity:hover {
+    color:rgba(155,0,0,1);
+    background-color: #E4D3B9;
+}
+.restaurant:hover {
+    color:rgba(155,0,0,1);
+    background-color: #E4D3B9;
+}
+.flight-quote:hover{
+    color:rgba(155,0,0,1);
+    background-color: #E4D3B9;
+}
+.min-price{
+    color: rgb(0, 199, 0);
+}
+.collection {
+    background-color:#FEEED7;
+    border-radius: 15px;
+    padding: 10px;
+    color: black;
+}
+.collection-item{
+    background-color:white;
+    border-radius: 15px;
+    padding: 10px;
+    color: black;  
+}
+.collection-item:hover{
+    color:rgba(155,0,0,1);
+    background-color: #FEEED7;
+}
+.fav-departure-text{
+    max-width: 200px;
+    padding:0px;
+    margin:0px;
+}
+<<<<<<< HEAD
 
 .calendarFont {
     color: red;
@@ -58,4 +170,8 @@ body {
 
 .footer {
     background-color: red;
+=======
+#fav-item-btn {
+    margin-left: 475px;
+>>>>>>> 64800c945e2c68f81104644e7234f797a609b3df
 }
