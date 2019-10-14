@@ -83,9 +83,6 @@ body {
 .ui-datepicker-month{
     margin-left: 50px;
 }
-.ui-datepicker-div{
-    align-content: center;
-}
 .ui-datepicker-next:hover{
     background-color: #2E6077;
 }
@@ -141,21 +138,16 @@ body {
 .min-price{
     color: rgb(0, 199, 0);
 }
-.collection {
+.card {
     background-color:#FEEED7;
     border-radius: 15px;
     padding: 10px;
     color: black;
 }
-.collection-item{
-    background-color:white;
-    border-radius: 15px;
-    padding: 10px;
-    color: black;  
-}
-.collection-item:hover{
+
+.card:hover{
     color:rgba(155,0,0,1);
-    background-color: #FEEED7;
+    background-color: rgb(241, 219, 187);
 }
 .fav-departure-text{
     max-width: 200px;
@@ -164,4 +156,5 @@ body {
 }
 #fav-item-btn {
     margin-left: 475px;
+    margin-right: 10px;
 }
