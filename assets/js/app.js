@@ -227,17 +227,29 @@ function displayFavList() {
 	$(".flight-container").hide();
 	$(".activity-container").hide();
 	$(".restaurant-container").hide();
+	$(".favorite-container").show();
 
-	for (i of favList) {
-		console.log(i);
+	for (var i=0; i<favList.length; i++) {
 		$(".favorite-results").append(`
-			<ul class="collection">
-				<li class="collection-item">		
-					<span class="fav-flight-span">${i.departureCity} to ${i.arrivalCity}</span>
-					<p class="fav-departure-text">Departure Date: ${i.departureDate}</p>
-					<button class="btn" id="fav-item-btn" data-departureCity="${i.departureCity}" data-arrivalCity="${i.arrivalCity}" data-departureDate="${i.departureDate}">
-						<i class="fav-heart fas fa-heart"></i>
-					</button>
+			<ul class="card">
+				<li class="card-content">
+					<div class="row">
+						<div class="col s6 m6 l6">
+							<span class="fav-flight-span">${favList[i].departureCity} to ${favList[i].arrivalCity}</span>
+							<p class="fav-departure-text">Departure Date: ${favList[i].departureDate}</p>
+						</div>	
+						<div class="col s6 m6 l6">
+							<div class="row">
+								<button class="btn fav-heart col s6 m6 l6" id="fav-item-btn" data-departureCity="${favList[i].departureCity}" data-arrivalCity="${favList[i].arrivalCity}" data-departureDate="${favList[i].departureDate}">
+									<i class=" fas fa-heart"></i>
+								</button>
+
+								<button class="btn fav-delete col s6 m6 l6" id="fav-delete-btn" data-index=${i} data-departureCity="${favList[i].departureCity}" data-arrivalCity="${favList[i].arrivalCity}" data-departureDate="${favList[i].departureDate}">
+									<i class=" fas fa-trash"></i>
+								</button>
+							</div>
+						</div>
+					</div>
 				</li>
 			</ul>
 		`);
@@ -304,5 +316,18 @@ $(document).on("click", "#fav-item-btn", function(event) {
 	callYelpAct();
 	callYelpRest();
 });
+
+$(document).on("click", "#fav-delete-btn", function(event) {
+	event.preventDefault();
+	$(".flight-container").hide();
+	$(".activity-container").hide();
+	$(".restaurant-container").hide();
+	$(".favorite-container").show();
+	// remove the index from favList array
+	var index = $(this).data("index");
+	favList.splice(index,1);
+	localStorage.setItem("favorites", JSON.stringify(favList));
+	displayFavList();
+})
 
 
