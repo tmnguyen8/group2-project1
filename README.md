@@ -21,8 +21,11 @@ Team Efforts: As a team, we came to a decision on the idea of the project. Every
 
 Individual Responsibilities:
 Trai – Skyscanner / yelp api
+
 Ziggy – front end css styling
+
 Romit – airport code api
+
 Pat – datepicker api
 
 Challenges:
