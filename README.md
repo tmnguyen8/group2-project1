@@ -1,5 +1,5 @@
 # group2-project1
-# A Getaway Website
+###  [A Getaway Website](https://tmnguyen8.github.io/group2-project1/)
 
 Most travel websites only give you prices on flights and hotels. When you want to plan for events or food, you have to rely on additional websites to help you navigate to the best activities or restaurants upon arrival at your vacation destination. Well, there is a solution for that with our website "A Getaway". 
 
