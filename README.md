@@ -13,22 +13,26 @@ Our website allows the user to search for the lowest price based on user's depar
 5. User can save the search to their favorite to retrieve later even after the page is refreshed.
 
 
-## Description: A Getaway is a travel website that allows us to be able to look up flight ticket at a low rate that also includes top recommendations at the city.
+## Description: 
+A Getaway is a travel website that allows us to be able to look up flight ticket at a low rate that also includes top recommendations at the city.
 
-## Motivation: We are following the concept of the customer-driven marketing strategy to build a travel site that suits our consumers. Not only will they be able to look up cheap flights, they will also be recommended the best the city has to offer. More importantly, they can save their favorite searches and retrieve them anytime.
+## Motivation: 
+We are following the concept of the customer-driven marketing strategy to build a travel site that suits our consumers. Not only will they be able to look up cheap flights, they will also be recommended the best the city has to offer. More importantly, they can save their favorite searches and retrieve them anytime.
 
-## Result: We were successfully able to combine a few API together to form a functioning website. All the functions and goals that were set at the beginning of the project have been met.
+## Result: 
+We were successfully able to combine a few API together to form a functioning website. All the functions and goals that were set at the beginning of the project have been met.
 
-## Team Efforts: As a team, we came to a decision on the idea of the project. Everyone contributes to the ideas of what could be done to improve the visual of the site. We all collaborated on individual functionality and/or styling of the site and collectively review and tested the website for any bugs. 
+## Team Efforts: 
+As a team, we came to a decision on the idea of the project. Everyone contributes to the ideas of what could be done to improve the visual of the site. We all collaborated on individual functionality and/or styling of the site and collectively review and tested the website for any bugs. 
 
 ## Individual Responsibilities:
-### Trai – Skyscanner / yelp api
+##### Trai – Skyscanner / yelp api
 
-### Ziggy – front end css styling
+##### Ziggy – front end css styling
 
-### Romit – airport code api
+##### Romit – airport code api
 
-### Pat – datepicker api
+##### Pat – datepicker api
 
 ## Challenges:
 Skyscanner API takes a long time to load and occasionally give us status code 400’s when there are too many requests made. They limit the number of requests.
