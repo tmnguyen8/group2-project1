@@ -5,6 +5,8 @@ Most travel websites only give you prices on flights and hotels. When you want t
 
 Our website allows the user to search for the lowest price based on user's departure, arrival and date inputs. It will search for the trendiest, and top activities in the area so you don't have to do additional searching. It will also display the best restaurants in the area according to Yelp. You can even save your search so if you change you mind, you can still retrieve it.
 
+  ![](./assets/images/demo.gif)
+
 ## Features:
 1. Retrieve the lowest price for airline tickets based on user's departure, arrival and date inputs from Skyscanner API
 2. Collect data from Yelp to display the best activities in the arrival city.
